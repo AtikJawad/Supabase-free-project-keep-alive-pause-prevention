@@ -1,6 +1,20 @@
 # Supabase Free Project Keep-Alive with GitHub Actions
 
-A small, transparent example for people using a **Supabase Free Plan** project who want to generate regular database activity automatically.
+A small, transparent way for people using a **Supabase Free Plan** project who want to generate regular database activity automatically.
+
+## Why does this exist?
+
+Supabase Free projects may be paused after a period of
+low activity. If you have a small personal project,
+portfolio project, university project, or hobby application
+that isn't used every day, this can become annoying.
+
+This repository shows how to:
+
+- create a harmless PostgreSQL keep-alive function
+- expose it through the Supabase REST API
+- test it with PowerShell
+- call it automatically with GitHub Actions
 
 > **Important:** Supabase says Free Plan projects may be paused after a period of low activity. Supabase's current documentation says that a few user database requests per day over the previous week are typically enough to keep a project from being paused. This project uses a GitHub Actions scheduled workflow to make a harmless API call to a PostgreSQL function in Supabase.
 >
@@ -33,26 +47,6 @@ SELECT 1;
 ```
 
 The GitHub workflow runs automatically on a schedule, so your computer does **not** need to stay on.
-
-## Repository structure
-
-```text
-supabase-free-project-keepalive/
-│
-├── .github/
-│   └── workflows/
-│       └── supabase-keepalive.yml
-│
-├── scripts/
-│   └── test_keep_alive.ps1
-│
-├── sql/
-│   └── keep_alive.sql
-│
-├── .gitignore
-├── LICENSE
-└── README.md
-```
 
 ---
 
