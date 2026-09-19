@@ -1,0 +1,13 @@
+# Local test secrets / environment files
+.env
+.env.*
+!.env.example
+
+# PowerShell local overrides
+*-local.ps1
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

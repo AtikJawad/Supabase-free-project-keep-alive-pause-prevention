@@ -1,0 +1,28 @@
+name: Supabase Keep Alive
+
+on:
+  # Run automatically once per day.
+  schedule:
+    # 00:17 UTC
+    # The non-zero minute helps avoid the top-of-hour load mentioned
+    # in GitHub's scheduled workflow documentation.
+    - cron: "17 0 * * *"
+
+  # Allows a manual test from:
+  # GitHub -> Actions -> Supabase Keep Alive -> Run workflow
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Supabase database
+        run: |
+          curl -X POST \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/keep_alive" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}'
+
